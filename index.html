@@ -20,6 +20,7 @@
       --line: rgba(244, 247, 239, 0.14);
       --shadow: rgba(0, 0, 0, 0.28);
       --error: #ffb4a8;
+      --ui-scale: 1;
     }
 
     * {
@@ -47,10 +48,10 @@
     .dashboard {
       width: 100%;
       min-height: 100dvh;
-      padding: clamp(14px, 2vw, 38px);
+      padding: calc(clamp(14px, 2vw, 38px) * var(--ui-scale));
       display: grid;
       grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr) auto;
-      gap: clamp(12px, 1.6vw, 28px);
+      gap: calc(clamp(12px, 1.6vw, 28px) * var(--ui-scale));
     }
 
     .lockscreen-header {
@@ -78,7 +79,7 @@
 
     .main-time {
       margin-top: clamp(8px, 0.9vw, 14px);
-      font-size: clamp(3.6rem, 7vw, 7.2rem);
+      font-size: calc(clamp(3.6rem, 7vw, 7.2rem) * var(--ui-scale));
       font-weight: 900;
       letter-spacing: -0.07em;
       color: var(--gold);
@@ -98,7 +99,7 @@
       min-height: 0;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(12px, 1.6vw, 28px);
+      gap: calc(clamp(12px, 1.6vw, 28px) * var(--ui-scale));
     }
 
     .tile {
@@ -466,6 +467,18 @@
        Weather.gov supports U.S. locations only.
     ============================================================ */
 
+  function updateUIScale() {
+  const designWidth = 1512;
+  const designHeight = 982;
+
+  const widthScale = window.innerWidth / designWidth;
+  const heightScale = window.innerHeight / designHeight;
+
+  const scale = Math.min(widthScale, heightScale);
+  const clampedScale = Math.max(0.72, Math.min(scale, 1.18));
+
+  document.documentElement.style.setProperty("--ui-scale", clampedScale);
+}
     const WEATHER_TILES = [
       {
         main: "Omaha",
@@ -565,7 +578,7 @@ const CHESTER_HUMAN_AGE_TABLE = [
        MAIN LOCKSCREEN CLOCK
     ============================================================ */
 
-    function updateMainClock() {
+      function updateMainClock() {
       const now = new Date();
 
       document.getElementById("mainDay").textContent =
@@ -874,6 +887,7 @@ function updateChesterAge() {
       createWeatherCard(city, index);
     });
 
+    updateUIScale();
     updateMainClock();
     updateRetirementCountdown();
     updateChesterAge();
@@ -884,6 +898,8 @@ function updateChesterAge() {
     setInterval(updateRetirementCountdown, 60 * 60 * 1000);
     setInterval(updateWeatherTileClocks, 1000);
     setInterval(loadAllWeather, 15 * 60 * 1000);
+    window.addEventListener("resize", updateUIScale);
+    window.addEventListener("orientationchange", updateUIScale);
   </script>
 </body>
 </html>
