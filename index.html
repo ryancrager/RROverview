@@ -267,6 +267,32 @@
       padding: clamp(18px, 2vw, 38px);
     }
 
+    .chester-card {
+      gap: clamp(10px, 1.2vw, 18px);
+    }
+
+    .chester-title {
+      font-size: clamp(1rem, 1.55vw, 2rem);
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+    }
+
+    .chester-age {
+      font-size: clamp(1.25rem, 2vw, 2.8rem);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .chester-human-age {
+      font-size: clamp(1.1rem, 1.6vw, 2rem);
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+
     .placeholder-label {
       font-size: clamp(0.75rem, 0.95vw, 1.2rem);
       font-weight: 900;
@@ -421,11 +447,11 @@
         <div class="placeholder-note">September 17, 2028</div>
       </section>
 
-     <section class="tile placeholder-card chester-card">
-  <div class="placeholder-title">🐾 MAYOR CHESTER 🐾</div>
-  <div class="placeholder-status" id="chesterAge">Loading...</div>
-  <div class="placeholder-note" id="chesterHumanAge">Loading human years...</div>
-</section>
+      <section class="tile placeholder-card chester-card">
+        <div class="chester-title">🐾 MAYOR CHESTER 🐾</div>
+        <div class="chester-age" id="chesterAge">Loading...</div>
+        <div class="chester-human-age" id="chesterHumanAge">Loading human years...</div>
+      </section>
 
     </section>
 
