@@ -48,10 +48,10 @@
     .dashboard {
       width: 100%;
       min-height: 100dvh;
-      padding: calc(clamp(14px, 2vw, 38px) * var(--ui-scale));
+      padding: clamp(14px, 2vw, 38px);
       display: grid;
       grid-template-rows: auto minmax(0, 1.15fr) minmax(0, 0.85fr) auto;
-      gap: calc(clamp(12px, 1.6vw, 28px) * var(--ui-scale));
+      gap: clamp(12px, 1.6vw, 28px);
     }
 
     .lockscreen-header {
@@ -94,7 +94,7 @@
     
     .main-time {
       margin-top: clamp(8px, 0.9vw, 14px);
-      font-size: calc(clamp(3.6rem, 7vw, 7.2rem) * var(--ui-scale));
+      font-size: clamp(3.6rem, 7vw, 7.2rem);
       font-weight: 900;
       letter-spacing: -0.03em;
       font-kerning: normal;
@@ -116,7 +116,7 @@
       min-height: 0;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: calc(clamp(12px, 1.6vw, 28px) * var(--ui-scale));
+      gap: clamp(12px, 1.6vw, 28px);
     }
 
     .tile {
