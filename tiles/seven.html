@@ -12,6 +12,24 @@
     <div class="tile-status">🌲 Christmas Vacation 🌲</div>
     <div class="tile-note">Friday, December 18</div>
   </section>
-  <script src="../scripts/christmas-tile.js"></script>
+  <script>
+  const christmasDate = new Date("2026-12-19T00:00:00");
+
+  function updateChristmasCountdown() {
+    const now = new Date();
+    const millisecondsPerDay = 1000 * 60 * 60 * 24;
+    const difference = christmasDate - now;
+    const daysRemaining = Math.max(
+      0,
+      Math.ceil(difference / millisecondsPerDay)
+    );
+
+    document.getElementById("christmasCountdown").textContent =
+      `${daysRemaining} DAYS`;
+  }
+
+  updateChristmasCountdown();
+  setInterval(updateChristmasCountdown, 60 * 60 * 1000);
+</script>
 </body>
 </html>
