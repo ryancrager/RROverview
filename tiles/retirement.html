@@ -6,12 +6,80 @@
   <title>Retirement</title>
   <link rel="stylesheet" href="../css/ryanos.css" />
 </head>
+
 <body class="tile-page">
   <section class="tile simple-tile">
+
+    <!-- Primary Countdown -->
     <div class="tile-hero" id="retirementCountdown">---</div>
-    <div class="tile-status">Retirement</div>
-    <div class="tile-note">September 17, 2028</div>
+
+    <div class="tile-status">
+      Terminal Leave
+    </div>
+
+    <div class="tile-note">
+      September 17, 2028
+    </div>
+
+    <!-- Secondary Countdown -->
+    <div class="tile-note" id="secondaryCountdown">
+      ---
+    </div>
+
   </section>
-  <script src="../scripts/retirement-tile.js"></script>
+
+  <script>
+
+    // ==========================================================
+    // RYANOS RETIREMENT TILE
+    //
+    // Edit ONLY the dates below.
+    // Everything else updates automatically.
+    // ==========================================================
+
+    // Primary countdown (large number)
+    // <-- Change this date to your main retirement milestone.
+    const retirementDate = new Date("2028-09-17T00:00:00");
+
+    // Secondary countdown (small number)
+    // <-- Change this to any date you want.
+    const secondaryDate = new Date("2028-03-17T00:00:00");
+
+
+
+    // ==========================================================
+    // No edits below this line are normally necessary.
+    // ==========================================================
+
+    function daysUntil(targetDate) {
+      const now = new Date();
+      const millisecondsPerDay = 1000 * 60 * 60 * 24;
+
+      return Math.max(
+        0,
+        Math.ceil((targetDate - now) / millisecondsPerDay)
+      );
+    }
+
+    function updateCountdowns() {
+
+      // Large countdown
+      document.getElementById("retirementCountdown").textContent =
+        `${daysUntil(retirementDate)} DAYS`;
+
+      // Small countdown
+      document.getElementById("secondaryCountdown").textContent =
+        `${daysUntil(secondaryDate)} DAYS`;
+
+    }
+
+    // Run immediately
+    updateCountdowns();
+
+    // Update once every hour
+    setInterval(updateCountdowns, 60 * 60 * 1000);
+
+  </script>
+
 </body>
 </html>
