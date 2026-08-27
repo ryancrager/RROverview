@@ -1,5 +1,5 @@
 (function () {
-  const RETIREMENT_DATE = new Date("2028-09-17T00:00:00");
+  const RETIREMENT_DATE = new Date("2028-09-15T00:00:00");
 
   function updateRetirementCountdown() {
     const now = new Date();
